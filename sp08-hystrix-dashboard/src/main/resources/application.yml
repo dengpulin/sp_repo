@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: hystrix-dashboard
+    
+server:
+  port: 4001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds：断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+#hello-service.ribbon.ConnectTimeout：请求连接的超时时间
+#hello-service.ribbon.ReadTimeout：请求处理的超时时间
+#hello-service.ribbon.OkToRetryOnAllOperations：对所有操作请求都进行重试
+#hello-service.ribbon.MaxAutoRetriesNextServer：切换实例的重试次数
+#hello-service.ribbon.MaxAutoRetries：对当前实例的重试次数  
+#根据如上配置，当访问到故障请求的时候，它会再尝试访问一次当前实例（次数由MaxAutoRetries配置），
+#如果不行，就换一个实例进行访问，如果还是不行，再换一次实例访问（更换次数由MaxAutoRetriesNextServer配置），
+#如果依然不行，返回失败信息。    
