@@ -13,5 +13,5 @@ public class Sp12ConfigApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Sp12ConfigApplication.class, args);
 	}
-
+//
 }
