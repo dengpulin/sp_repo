@@ -1,14 +1,27 @@
 spring:
   application:
     name: config-server
-  
+    
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/dengpulin/sp08-hystrix-dashboard
-          searchPaths: sp-config
-          #username: your-username
+        native:
+          search-locations: classpath:/config    
+  rabbitmq:
+    host: 192.168.32.128
+    port: 5672
+    username: admin
+    password: admin      
+  
+  #cloud:
+  #  config:
+   #   server:
+    #    git:
+    #      uri: https://github.com/dengpulin/sp08-hystrix-dashboard
+     #     searchPaths: sp-config
+         #username: your-username
           #password: your-password
     
 server:
@@ -18,3 +31,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh      
